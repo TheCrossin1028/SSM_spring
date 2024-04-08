@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 1. 单个构造参数注入 -->
+
+    <!-- 步骤1: 将他们都存放在ioc容器 [ioc]-->
+    <bean id="userDao" class="com.crossing.ioc_02.UserDao"/>
+    <bean id="userService" class="com.crossing.ioc_02.UserService">
+        <!-- 构造参数传值 di的配置-->
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+
+    <!-- 2. 多个构造参数注入 -->
+    <bean id="userService1" class="com.crossing.ioc_02.UserService">
+        <constructor-arg value="18"/>
+        <constructor-arg value="111"/>
+        <constructor-arg value="userDao"/>
+    </bean>
+
+    <bean id="userService2" class="com.crossing.ioc_02.UserService">
+        <constructor-arg name="name" value="18"/>
+        <constructor-arg name="age" value="111"/>
+        <constructor-arg name="userDao" value="userDao"/>
+    </bean>
+
+    <bean id="userService3" class="com.crossing.ioc_02.UserService">
+        <constructor-arg index="0" value="18"/>
+        <constructor-arg index="1" value="111"/>
+        <constructor-arg index="2" value="userDao"/>
+    </bean>
+
+    <!-- 3. 触发setter方法进行注入  -->
+    <bean id="movieFinder" class="com.crossing.ioc_02.MovieFinder"/>
+
+    <bean id="simpleMovieLister" class="com.crossing.ioc_02.SimpleMovieLister">
+        <property name="movieName" value="123"/>
+        <property name="movieFinder" ref="movieFinder"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,9 @@
+# 项目排除路径
+/spring-aop-annotation-09/target/
+/spring-ioc-annotation-03/target/
+/spring-ioc-annotation-pratice-04/target/
+/spring-ioc-java-06/target/
+/spring-ioc-xml-01/target/
+/spring-ioc-xml-pratice-02/target/
+/spring-java-practice-07/target/
+/spring_aop-annotation-10/target/
