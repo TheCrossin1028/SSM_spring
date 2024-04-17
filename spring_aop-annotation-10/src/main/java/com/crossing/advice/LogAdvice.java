@@ -1,9 +1,6 @@
 package com.crossing.advice;
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,7 +14,14 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LogAdvice {
 
-    @Before("execution(* com.crossing.service.impl.*.*(..))")
+    @Pointcut("execution(* com.crossing.service.impl.*.*(..))")
+    public void pc() {
+    }
+
+    ;
+
+    //    @Before("execution(* com.crossing.service.impl.*.*(..))")
+    @Before("pc()")
     public void start() {
         System.out.println("method start");
     }
